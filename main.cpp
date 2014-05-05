@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 string diccinario[2] = {"1-0-0-0-0-0-", "0-1-0-0-0-0-"};
 string listaLetras[2] = {"A", "B"};
 
@@ -24,8 +23,6 @@ string letras(string letra) {
 
 int main() {
     string letra;
-    string lett;
-    stringstream l;
     int bits;
     char buf[11];
     int fd = open("/dev/ttyACM0", O_RDONLY);
