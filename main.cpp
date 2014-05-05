@@ -9,25 +9,25 @@
 
 using namespace std;
 
-//array<char,2> diccionario = {'1-0-0-0-0-0-','0-1-0-0-0-0-'}; 
+
 string diccinario[2] = {"1-0-0-0-0-0-", "0-1-0-0-0-0-"};
+string listaLetras[2] = {"A", "B"};
 
 string letras(string letra) {
-   // cout << letra << endl;
-    for (int i = 0; i <= 1; i++) {
+    for (int i = 0; i < 2; i++) {
         if (letra == diccinario[i]) {
-            cout << "Palabra encontrada" << endl;
-        }
+            return listaLetras[i];
+        }   
     }
     return letra;
-
 }
 
 int main() {
     string letra;
+    string lett;
     stringstream l;
     char buf[255];
-    int fd = open("/dev/ttyACM1", O_RDONLY);
+    int fd = open("/dev/ttyACM0", O_RDONLY);
     if (fd == -1) {
         printf("El puerto no esta disponible");
     } else {
@@ -39,14 +39,11 @@ int main() {
                     buf[res] = 0;
                     l << buf;
                     l >> letra;
-                    printf(buf);
-                    //printf("aaaaaaaaaaa a");
-                    //cout << res << endl;
-                    letras(letra);
-                    //printf(buf);
+                    lett += letra; 
                 }
+                cout << letras(lett) << endl;
+                lett="";
             }
-            //printf(res);
         }
     }
     return 0;
